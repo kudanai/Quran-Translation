@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 
 # this file is part of the Dhivehi Quran translation
 # maintainance project
