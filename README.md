@@ -6,9 +6,8 @@ Before commiting changes, please read the project guidelines carefully.
 
 ## TODO's
 
-* Create an alternate branch with transliterated arabic words
-* digitize the foreword
-* translate the foreword to english
+* Create an alternate branch with transliterated arabic words - *in progress*
+* translate the foreword to english - *in progress*
 
 
 ## Project Guidelines
