@@ -34,4 +34,5 @@ The following people have contributed to this project in various ways over time
 * Yusuf Shunan
 * Akbar Asif
 * Mohamed Vishah
+* Ajwad Zaheer
 
