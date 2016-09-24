@@ -30,6 +30,7 @@ The following people have contributed to this project in various ways over time
 
 * Naail Abdul Rahman <KudaNai>
 * Bunyameen Bin Muhammed
+* Mohamed Nisham
 * Mohamed Malik
 * Yusuf Shunan
 * Akbar Asif
