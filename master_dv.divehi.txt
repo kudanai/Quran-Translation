@@ -6241,7 +6241,7 @@
 #  Translator: Office of the President of Maldives
 #  Language: Divehi
 #  ID: dv.divehi
-#  Last Update: February 7, 2011
+#  Last Update: December 15, 2020
 #  Source: Tanzil.net
 #
 #=====================================================================
