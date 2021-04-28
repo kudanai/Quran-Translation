@@ -14,7 +14,14 @@ TRANSLIT_FILE = "_quran_freq_dv.csv"
 NEXT_WORDS_FILE = "_dhivehi_next_words.csv"
 
 tranliteration_dicts = []
+with open(TRANSLIT_FILE, mode='r', encoding='utf-8-sig', newline='') as translit_file:
+    tranliteration_dicts = list(
+        csv.DictReader(translit_file, delimiter=','))
 next_words = []
+with open(NEXT_WORDS_FILE, mode='r', encoding='utf-8-sig', newline='') as next_words_file:
+    next_words = list(
+        csv.DictReader(next_words_file, delimiter=','))
+
 
 word_beginnigns = [("ކަމ", ""),
                    ("ކުރ", ""),
@@ -96,38 +103,18 @@ def process_combo(row):
                 first_word_data["dv"], sepatated[2], sepatated[1]))  # thaana, next_word, original
         else:
             return row  # orginal, next_word, original
+    except:
+        return row
 
 
 def main():
-    global tranliteration_dicts
-    global next_words
-    with open(TRANSLIT_FILE, mode='r', encoding='utf-8-sig', newline='') as translit_file:
-        tranliteration_dicts = list(
-            csv.DictReader(translit_file, delimiter=','))
-
-    with open(NEXT_WORDS_FILE, mode='r', encoding='utf-8-sig', newline='') as next_words_file:
-        next_words = list(
-            csv.DictReader(next_words_file, delimiter=','))
-
     input_strings = []
     output_strings = []
 
     with open(INPUT_FILE, mode='r', encoding='utf-8', newline='') as txt_file:
         input_strings = list(map(str.strip, txt_file.readlines()))
         for row in input_strings:
-            sepatated = separete_arabic_and_thaana(row)
-            try:
-                first_word_data = get_first_word_data(sepatated[1])
-                if first_word_data["dv"]:
-                    word_pair = (
-                        first_word_data["dv"], sepatated[2], sepatated[1])  # thaana, next_word, original
-                    output_strings.append(get_final_dhivehi(word_pair))
-                else:
-                    output_strings.append(row)  # orginal, next_word, original
-
-            except:
-                # pass
-                output_strings.append(row)
+            output_strings.append(process_combo(row))
 
     with open(OUTPUT_FILE, mode='w', encoding='utf-8-sig', newline='') as output_csv_file:
         writer = csv.writer(output_csv_file)
