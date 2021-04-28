@@ -1,7 +1,7 @@
 # Quran Translation Maintenance Project
 
-This is a collaborative effort to keep the digized version of the Dhivehi Quran translation up-to-date and error free. This version is currently used by tanzil.net, zekr and quran.mv among others.   
-  
+This is a collaborative effort to keep the digized version of the Dhivehi Quran translation up-to-date and error free. This version is currently used by tanzil.net, zekr and quran.mv among others.
+
 Before commiting changes, please read the project guidelines carefully.
 
 ## TODO's
@@ -36,4 +36,6 @@ The following people have contributed to this project in various ways over time
 * Akbar Asif
 * Mohamed Vishah
 * Ajwad Zaheer
+* Hassaan Abdul Razzaq
+* Mohamed Ashraaf Ibrahim
 
