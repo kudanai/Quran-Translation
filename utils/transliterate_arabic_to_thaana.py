@@ -103,7 +103,7 @@ def main():
     global next_words
     with open(TRANSLIT_FILE, mode='r', encoding='utf-8-sig', newline='') as translit_file:
         tranliteration_dicts = list(
-            csv.DictReader(translit_file, ["ar", "freq", "dv", "unchangable"], delimiter=','))
+            csv.DictReader(translit_file, delimiter=','))
 
     with open(NEXT_WORDS_FILE, mode='r', encoding='utf-8-sig', newline='') as next_words_file:
         next_words = list(
