@@ -28,12 +28,14 @@ Before commiting changes, please read the project guidelines carefully.
 
 The following people have contributed to this project in various ways over time
 
-* Naail Abdul Rahman <KudaNai>
+* Naail Abdul Rahman
 * Bunyameen Bin Muhammed
 * Mohamed Nisham
 * Mohamed Malik
 * Yusuf Shunan
 * Akbar Asif
 * Mohamed Vishah
-* Ajwad Zaheer
+* Mohamed Ashraaf Ibrahim
+* Hassaan Abdul Razzaq
+* Ismail Zahee
 
