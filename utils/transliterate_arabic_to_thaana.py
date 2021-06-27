@@ -136,6 +136,7 @@ def process_combo(row):
     processed_row = re.sub('ތްގެ', 'ތުގެ', processed_row)
     processed_row = re.sub('ﷲ އެއްވެސް', 'ﷲއެއްވެސް', processed_row)
     processed_row = re.sub('ޤުރްއާންގެ', 'ޤުރްއާނުގެ', processed_row)
+    processed_row = re.sub('ސަޖިދަގ', 'ސަޖިދައިގ', processed_row)
 
 
 
