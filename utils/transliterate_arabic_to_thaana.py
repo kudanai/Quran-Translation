@@ -24,7 +24,6 @@ with open(NEXT_WORDS_FILE, mode='r', encoding='utf-8-sig', newline='') as next_w
 
 
 word_beginnigns = [("ކަމ", ""),
-                   ("ކުރ", ""),
                    ("ކުޅަ", ""),
                    ("^ތެރި", ""),
                    ("އަށ", 1),
