@@ -137,6 +137,7 @@ def process_combo(row):
 
     # Final fixes
     processed_row = re.sub('\u07B0(.\u07B0)', "\u07AA\\1", processed_row)
+    processed_row = re.sub('ތްގެ', 'ތުގެ', processed_row)
 
     return processed_row
 
