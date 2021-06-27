@@ -29,7 +29,6 @@ word_beginnigns = [("ކަމ", ""),
                    ("އަށ", 1),
                    ("އަކ", 1),
                    ("އެކެ", 1),
-                   ("އެއ", 1),
                    ("ތައް", ""),
                    ("^ން", ""),
                    ("ވެރ", "")]  # 1 if the previous word's last fili and next word's first akuru to be removed
@@ -134,6 +133,9 @@ def process_combo(row):
     # Final fixes
     processed_row = re.sub('\u07B0(.\u07B0)', "\u07AA\\1", processed_row)
     processed_row = re.sub('ތްގެ', 'ތުގެ', processed_row)
+    processed_row = re.sub('ﷲ އެއްވެސް', 'ﷲއެއްވެސް', processed_row)
+
+
 
     return processed_row
 
