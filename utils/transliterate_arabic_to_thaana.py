@@ -123,16 +123,22 @@ def process_combo(row):
         Input string transliteraated th thaana.
         Eg: ރަޙްމާންވަންތަ
     '''
+
     sepatated = separete_arabic_and_thaana(row)
+    processed_row = row
+
     try:
         first_word_data = get_first_word_data(sepatated[1])
         if first_word_data["dv"]:
-            return get_final_dhivehi((
+            processed_row = get_final_dhivehi((
                 first_word_data["dv"], sepatated[2], sepatated[1]))  # thaana, next_word, original
-        else:
-            return row  # orginal, next_word, original
     except:
-        return row
+        pass
+
+    # Final fixes
+    processed_row = re.sub('\u07B0(.\u07B0)', "\u07AA\\1", processed_row)
+
+    return processed_row
 
 
 def main():
