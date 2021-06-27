@@ -31,7 +31,8 @@ word_beginnigns = [("ކަމ", ""),
                    ("އެކެ", 1),
                    ("ތައް", ""),
                    ("^ން", ""),
-                   ("ވެރ", "")]  # 1 if the previous word's last fili and next word's first akuru to be removed
+                   ("ވެރ", ""),
+                   ("^ވަންތަ", "")]  # 1 if the previous word's last fili and next word's first akuru to be removed
 
 regex_removable_letters = []
 regex_all = []
