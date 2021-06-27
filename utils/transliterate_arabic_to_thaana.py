@@ -26,6 +26,7 @@ with open(NEXT_WORDS_FILE, mode='r', encoding='utf-8-sig', newline='') as next_w
 word_beginnigns = [("ކަމ", ""),
                    ("ކުރ", ""),
                    ("ކުޅަ", ""),
+                   ("^ތެރި", ""),
                    ("އަށ", 1),
                    ("އަކ", 1),
                    ("އެކެ", 1),
@@ -134,6 +135,7 @@ def process_combo(row):
     processed_row = re.sub('\u07B0(.\u07B0)', "\u07AA\\1", processed_row)
     processed_row = re.sub('ތްގެ', 'ތުގެ', processed_row)
     processed_row = re.sub('ﷲ އެއްވެސް', 'ﷲއެއްވެސް', processed_row)
+    processed_row = re.sub('ޤުރްއާންގެ', 'ޤުރްއާނުގެ', processed_row)
 
 
 
