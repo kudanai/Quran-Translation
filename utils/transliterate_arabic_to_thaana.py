@@ -105,6 +105,11 @@ def get_final_dhivehi(word_pair):
         if word_pair[0][-1:] == '\u07A6' and word_pair[1][0:1] == "ގ":
             new_pair = (new_pair[0] + 'އި', new_pair[1])
 
+        # ކަލިމައިގެ ފަހަތަށް 'ގެ' ގުޅޭ އިރު ކުރީ އަކުރުގައި ސުކުން އޮތްނަމަ އުބުފިއްޔަށް ބަދަލު ކުރުން
+        # މިސާލު: ރަޙްމަތްގެ، ޤުރްއާންގައި
+        if word_pair[0][-1:] == '\u07B0' and word_pair[1][0:1] == "ގ":
+            new_pair = (new_pair[0][0:-1] + '\u07AA', new_pair[1])
+        
         return new_pair[0] + new_pair[1]
     else:
         return new_pair[0] + " " + new_pair[1]
@@ -139,10 +144,7 @@ def process_combo(row):
 
     # Final fixes
     processed_row = re.sub('\u07B0(.\u07B0)', "\u07AA\\1", processed_row)
-    processed_row = re.sub('ތްގެ', 'ތުގެ', processed_row)
     processed_row = re.sub('ﷲ އެއްވެސް', 'ﷲއެއްވެސް', processed_row)
-    processed_row = re.sub('ޤުރްއާންގެ', 'ޤުރްއާނުގެ', processed_row)
-    processed_row = re.sub('^ދީންގެ', 'ދީނުގެ', processed_row)
 
     return processed_row
 
@@ -164,5 +166,6 @@ def main():
 
 if __name__ == "__main__":
     # print(process_combo("سجدة ގައި"))
+    # print(get_final_dhivehi(("ޤުރްއާން", "ގައި", "قرآن")))
     main()
 
