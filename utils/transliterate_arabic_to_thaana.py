@@ -145,6 +145,8 @@ def process_combo(row):
     # Final fixes
     processed_row = re.sub('\u07B0(.\u07B0)', "\u07AA\\1", processed_row)
     processed_row = re.sub('ﷲ އެއްވެސް', 'ﷲއެއްވެސް', processed_row)
+    processed_row = re.sub('ރަޙިމު ', 'ރަޙްމު ', processed_row)
+    processed_row = re.sub('ރަޙިމެ', 'ރަޙްމެ', processed_row)
 
     return processed_row
 
