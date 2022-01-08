@@ -17,7 +17,7 @@ def main():
             for b in a:
                 find_text = b[0]
                 change_text = trans.process_combo(b[0])
-                row = re.sub(find_text, change_text, row)
+                row = re.sub(find_text, change_text, row, count=1)
             for single_word in re.finditer(f"(?<!\w)[{trans.ARAB_SET}]+", row):
                 translit_word = trans.get_first_word_data(single_word[0])
                 if translit_word:
