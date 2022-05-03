@@ -24,7 +24,14 @@ def main():
                     row = re.sub(single_word[0], translit_word["dv"]
                                  if translit_word["dv"] else single_word[0], row)
             out_file.writelines(row)
-
+    
+    with open(OUTPUT_FILE, mode='r', encoding='utf-8', newline='') as out_file:
+        filedata = out_file.read()
+    with open(OUTPUT_FILE, mode='w', encoding='utf-8', newline='') as fixed_file:
+        # Fixes
+        filedata = re.sub('ޚަލްޤުފުޅެއްގެ', 'ޚުލުޤުފުޅެއްގެ', filedata)
+        filedata = re.sub(r'ރަޙްމު ?([(ގަ)|(ގެ)|(ތަ)])', r'ރަޙިމު\1', filedata)
+        fixed_file.write(filedata)
 
 if __name__ == "__main__":
     main()
