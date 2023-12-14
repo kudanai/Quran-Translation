@@ -1,6 +1,6 @@
 # Quran Translation Maintenance Project
 
-This is a collaborative effort to keep the digitized version of the Dhivehi Quran translation up-to-date and error free. This version is currently used by tanzil.net, zekr and quran.mv among others.
+This is a collaborative effort to keep the digitized version of the Dhivehi Quran translation up-to-date and error free. This version is currently used by tanzil.net, quran.com, quranacademy.org, Al Quran and quranmv among others.
 
 Before commiting changes, please read the project guidelines carefully.
 
