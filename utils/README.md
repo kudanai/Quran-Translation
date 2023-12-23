@@ -19,7 +19,3 @@ will download the latest translation files available on tanzil.net and add them 
 ## transError_check.py
 
 various automated routines for checking common errors in the translation. currently only checks for repeated "fili" without a consonant.
-
-## navigator.py
-
-**incomplete** a simple quran navigator which might help editors review the translation files.
