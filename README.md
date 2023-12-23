@@ -1,12 +1,12 @@
 # Quran Translation Maintenance Project
 
-This is a collaborative effort to keep the digitized version of the Dhivehi Quran translation up-to-date and error free. This version is currently used by tanzil.net, zekr and quran.mv among others.
+This is a collaborative effort to keep the digitized version of the Dhivehi Quran translation up-to-date and error free. This version is currently used by tanzil.net, quran.com, Al Quran and quran.mv among others.
 
-Before commiting changes, please read the project guidelines carefully.
+Before committing changes, please read the project guidelines carefully.
 
 ## TODO's
 
-* translate the foreword to english - *in progress*
+* Translate the foreword to English
 
 
 ## Project Guidelines
@@ -19,9 +19,9 @@ Before commiting changes, please read the project guidelines carefully.
 
 * NEVER ADD OR REMOVE ROWS from the file. This is **VERY IMPORTANT**
 
-* only use unicode input methods to enter text. This means you must change your text entry language to "Dhivehi" while typing dhivehi, and to "Arabic" while typing Arabic. (You may need to setup your system to allow this. Go to regional settings and add keyboad layout)
+* Only use unicode input methods to enter text. This means you must change your text entry language to "Dhivehi" while typing dhivehi, and to "Arabic" while typing Arabic. (You may need to setup your system to allow this. Go to regional settings and add keyboad layout)
 
-* use a reliable text-editor that supports unicode, and edit in plain-text mode only (don't introduce rich-text markups, BOM's etc…)
+* Use a reliable text-editor that supports unicode, and edit in plain-text mode only (don't introduce rich-text markups, BOM's etc…)
 
 ## Contributors
 
