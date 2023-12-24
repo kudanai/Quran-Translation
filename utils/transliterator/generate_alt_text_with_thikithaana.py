@@ -4,8 +4,9 @@ import re
 import csv
 import transliterate_arabic_to_thaana as trans
 
-INPUT_FILE = "master_dv.divehi.txt"
-OUTPUT_FILE = "alt_dv.divehi.txt"
+
+INPUT_FILE = trans.BASE_DIR/"master_dv.divehi.txt"
+OUTPUT_FILE = trans.BASE_DIR/"alt_dv.divehi.txt"
 
 
 def main():
