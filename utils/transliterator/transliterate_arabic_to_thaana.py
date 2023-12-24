@@ -2,16 +2,19 @@ __author__ = "Hassaan Abdul Razzaq <hassaan.maaldheefee@gmail.com>"
 
 import re
 import csv
+from pathlib import Path
 
 ARAB_SET = u"\u0621-\u06FF"
 THAA_SET = u"\u0780-\u07B1"
 LONG_FILI = u"\u07A7\u07A9\u07AB\u07AD\u07AF"
 
-INPUT_FILE = "utils/transliteration_test/arabic_words_with_next.txt"
-OUTPUT_FILE = "utils/transliteration_test/arabic_words_with_next_out.csv"
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-TRANSLIT_FILE = "utils/transliteration_data/_quran_freq_dv.csv"
-NEXT_WORDS_FILE = "utils/transliteration_data/_dhivehi_next_words.csv"
+INPUT_FILE = BASE_DIR/"utils/transliterator/transliteration_test/arabic_words_with_next.txt"
+OUTPUT_FILE = BASE_DIR/"utils/transliterator/transliteration_test/arabic_words_with_next_out.csv"
+
+TRANSLIT_FILE = BASE_DIR/"utils/transliterator/transliteration_data/_quran_freq_dv.csv"
+NEXT_WORDS_FILE = BASE_DIR/"utils/transliterator/transliteration_data/_dhivehi_next_words.csv"
 
 tranliteration_dicts = []
 with open(TRANSLIT_FILE, mode='r', encoding='utf-8-sig', newline='') as translit_file:
