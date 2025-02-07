@@ -1,6 +1,6 @@
 # Quran Translation Maintenance Project
 
-This is a collaborative effort to keep the digitized version of the Dhivehi Quran translation up-to-date and error free. This version is currently used by tanzil.net, quran.com, Al Quran and quran.mv among others.
+This is a collaborative effort to keep the digitized version of the [Dhivehi Translation of the Noble Quran by Office of the President of Maldives](https://presidency.gov.mv/quran), up-to-date and error free. This version is currently used by [Tanzil.net](https://tanzil.net/#trans/dv.divehi/1:1), [Quran.com](https://quran.com/1), [Quran for Android](https://play.google.com/store/apps/details?id=com.quran.labs.androidquran&hl=en), [Tarteel.ai](https://www.tarteel.ai), [Al Quran (gtaf)](https://gtaf.org/apps/quran/), [Quranly](https://www.quranly.app) and [Quran.mv](https://quran.mv) among others.
 
 Before committing changes, please read the project guidelines carefully.
 
