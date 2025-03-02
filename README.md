@@ -4,10 +4,6 @@ This is a collaborative effort to keep the digitized version of the [Dhivehi Tra
 
 Before committing changes, please read the project guidelines carefully.
 
-## TODO's
-
-* Translate the foreword to English
-
 
 ## Project Guidelines
 
