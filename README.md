@@ -4,11 +4,6 @@ This is a collaborative effort to keep the digitized version of the [Dhivehi Tra
 
 Before committing changes, please read the project guidelines carefully.
 
-## TODO's
-
-* Translate the foreword to English
-
-
 ## Project Guidelines
 
 * The project's aim is to produce a digital copy word-for-word and therefore, you must NOT add your own interpretations, opinions etc. Basically, if it's not in the official translation, don't think about it.
