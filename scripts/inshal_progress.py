@@ -62,7 +62,7 @@ def get_merge_base():
 
 
 def get_branch_diff_stats(base):
-    raw = _git("diff", "--stat", f"{base}..HEAD")
+    raw = _git("diff", "--stat", f"{base}")
     files = []
     for line in raw.splitlines():
         m = re.match(r"\s*(.+?)\s*\|\s*(\d+)\s+(.+)", line)
@@ -86,7 +86,7 @@ def get_branch_diff_stats(base):
 
 
 def get_changed_verses(base):
-    diff = _git("diff", f"{base}..HEAD", "--", "*.txt")
+    diff = _git("diff", f"{base}", "--", "*.txt")
     changed = set()
     for line in diff.splitlines():
         if not line.startswith("+") or line.startswith("+++"):
