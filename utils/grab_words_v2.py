@@ -1,52 +1,120 @@
-#!/usr/bin/env python -v
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
 
-import re
-import os
 import collections
+import csv
+import re
+from pathlib import Path
 
-TRANS_FILE = "master_dv.divehi.txt"
-WORD_LIST = "arabic_freq.txt"
+ARAB_SET = "\u0621-\u06ff"
+THAA_SET = "\u0780-\u07b1"
 
-ARAB_SET = u"\u0621-\u06FF"
-THAA_SET = u"\u0780-\u07B1"
+BASE_DIR = Path(__file__).resolve().parent.parent
+TRANS_FILE = BASE_DIR / "master_dv.divehi.txt"
+FREQ_CSV = BASE_DIR / "utils/transliterator/transliteration_data/_quran_freq_dv.csv"
+NEXT_WORDS_CSV = (
+    BASE_DIR / "utils/transliterator/transliteration_data/_dhivehi_next_words.csv"
+)
 
-LONG_FILI = []
+ARABIC_RE = re.compile(f"[{ARAB_SET}][{ARAB_SET} ]+[{ARAB_SET}]?")
+COMBO_RE = re.compile(rf"(?<!\w)[{ARAB_SET}][{ARAB_SET} ]+[{THAA_SET}]+")
+SPLIT_RE = re.compile(f"([{ARAB_SET}][{ARAB_SET} ]+[{ARAB_SET}]?) ([{THAA_SET}]+)")
 
-# match = re.findall(f"(?<!\w)[{ARAB_SET}][{ARAB_SET} ]+[{THAA_SET}]+",line)
-# match = re.findall(f"(?<=[{ARAB_SET}]) [{THAA_SET}]+", line)
 
-def get_arabic_word_list(in_file, remove_duplicates=False):
-    arab_words = []
-    for line in in_file:
-        match = re.findall(f"[{ARAB_SET}][{ARAB_SET} ]+[{ARAB_SET}]?", line)
-        if match:
-            for m in match:
-                m = m.strip()
-                if remove_duplicates:
-                    if not m in arab_words:
-                        arab_words.append(m)
-                else:
-                    arab_words.append(m)
-    return arab_words
+def read_translation_lines():
+    with TRANS_FILE.open(encoding="utf-8") as f:
+        return f.readlines()
 
-def arabic_word_frequency(in_file):
-    arab_words = get_arabic_word_list(in_file)
-    return collections.Counter(arab_words)
+
+def extract_arabic_frequencies(lines):
+    words = []
+    for line in lines:
+        words.extend(m.strip() for m in ARABIC_RE.findall(line))
+    return collections.Counter(words)
+
+
+def extract_next_word_frequencies(lines):
+    words = []
+    for line in lines:
+        words.extend(
+            split.group(2)
+            for combo in COMBO_RE.finditer(line)
+            if (split := SPLIT_RE.match(combo[0]))
+        )
+    return collections.Counter(words)
+
+
+def read_csv_rows(path, fieldnames):
+    rows = []
+    if path.exists():
+        with path.open(encoding="utf-8-sig", newline="") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                filled = {field: row.get(field, "") for field in fieldnames}
+                rows.append(filled)
+    return rows
+
+
+def write_csv(path, fieldnames, rows):
+    with path.open("w", encoding="utf-8-sig", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def update_csv(path, fieldnames, key_field, new_freqs):
+    existing_rows = read_csv_rows(path, fieldnames)
+    existing_by_key = {row[key_field]: row for row in existing_rows}
+
+    new_count = 0
+    updated_count = 0
+    new_rows = []
+
+    for word, freq in new_freqs.items():
+        if word in existing_by_key:
+            old_freq = existing_by_key[word].get("freq", "")
+            if old_freq != str(freq):
+                existing_by_key[word]["freq"] = str(freq)
+                updated_count += 1
+        else:
+            new_row = dict.fromkeys(fieldnames, "")
+            new_row[key_field] = word
+            new_row["freq"] = str(freq)
+            new_rows.append(new_row)
+            new_count += 1
+
+    existing_rows.extend(new_rows)
+    write_csv(path, fieldnames, existing_rows)
+    return new_count, updated_count, len(existing_rows)
+
 
 def main():
-    in_file = open(TRANS_FILE, "r", encoding="utf-8")
+    lines = read_translation_lines()
 
-    try:
-        os.remove(WORD_LIST)
-    except:
-        pass
+    ar_freqs = extract_arabic_frequencies(lines)
+    ar_new, ar_updated, ar_total = update_csv(
+        FREQ_CSV,
+        ["ar", "dv", "freq", "unchangable", "alt_spelling", "comment"],
+        "ar",
+        ar_freqs,
+    )
 
-    freq_list = arabic_word_frequency(in_file).most_common()
+    nw_freqs = extract_next_word_frequencies(lines)
+    nw_new, nw_updated, nw_total = update_csv(
+        NEXT_WORDS_CSV,
+        ["word", "freq", "joinable", "trim_first_letter"],
+        "word",
+        nw_freqs,
+    )
 
-    with open(WORD_LIST, "w", encoding="utf-8") as out_file:
-        for word in freq_list:
-            out_file.write('%s\n' % ','.join(str(n) for n in word))
+    print("=== _quran_freq_dv.csv ===")
+    print(f"  New Arabic words: {ar_new}")
+    print(f"  Updated frequencies: {ar_updated}")
+    print(f"  Total rows: {ar_total}")
+    print()
+    print("=== _dhivehi_next_words.csv ===")
+    print(f"  New next-words: {nw_new}")
+    print(f"  Updated frequencies: {nw_updated}")
+    print(f"  Total rows: {nw_total}")
 
 
 if __name__ == "__main__":
